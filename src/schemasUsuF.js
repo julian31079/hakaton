@@ -1,0 +1,63 @@
+const{Schema,model}=require("mongoose");
+const usuariosF=new Schema(
+    {
+        cedula:{
+            type:String,
+            required:true
+        },
+        nombre:{
+            type:String,
+            required:true
+        },
+        celular:{
+            type:Number,
+            required:true
+        },
+        departamento:{
+            type:String,
+            required:true
+        },
+        ciudad:{
+            type:String,
+            required:true
+        },
+        barrio:{
+            type:String,
+            required:true
+        },
+        numSalarios:{
+            type:Number,
+            required:true
+        },
+        bath:{
+            type:Number,
+            required:true
+        },
+        cuartos:{
+            type:Number,
+            required:true
+        },
+        vulnerabilidad:{
+            type:Boolean,
+            required:true
+        },
+        miembros:{
+            type:Number,
+            required:true
+        },
+        estrato:{
+            type:Number,
+            required:true
+        },
+        miembrosVulnerables:{
+            type:Number,
+            required:false
+        },
+        programaSocial:{
+            type:Boolean,
+            required:true
+        }
+        
+    }
+);
+module.exports=model("UsuarioF",usuariosF);
