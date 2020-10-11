@@ -1,7 +1,8 @@
 var gestor = {};
-var Usuariog = require("./schemasUsuG");
-var Usuariot = require("./schemasUsuT");
-var Usuariof = require("./schemasUsuF");
+var Usuariog = require("./Schemas/schemasUsuG");
+var Usuariot = require("./Schemas/schemasUsuT");
+var Usuariof = require("./Schemas/schemasUsuF");
+var Worker = require("./Schemas/shemasWorker");
 gestor.verifUser = async () => {
     var users = await Usuariog.find();
     var users1 = await Usuariot.find();
@@ -15,13 +16,14 @@ gestor.verifUser = async () => {
         }
         return res;
     }
-    console.log(users2.length);
 
     users.map((user) => {
         users1.map(async (usu) => {
             if (!validar()) {
+
                 if (!user.programaSocial && !usu.programaSocial) {
                     programa = false;
+
                 }
                 if (user.numSalarios <= 4) {
                     puntaje += 5;
@@ -48,14 +50,15 @@ gestor.verifUser = async () => {
                         puntaje += 2;
                     }
                 }
-                if (puntaje <= 42 && !programa) {
+                console.log(puntaje);
+                if (puntaje >= 42 && !programa) {
                     var usuario = new Usuariof({ "cedula": usu.cedula, "nombre": usu.nombre, "celular": usu.celular, "departamento": usu.departamento, "ciudad": usu.departamento, "barrio": usu.barrio, "direccion": usu.direccion, "estrato": usu.estrato, "numSalarios": usu.numSalarios, "cuartos": usu.cuartos, "bath": usu.bath, "miembros": usu.miembros, "vulnerabilidad": usu.vulnerabilidad, "miembrosVulnerables": usu.miembrosVulnerables, "programaSocial": usu.programaSocial });
                     await usuario.save();
                 }
 
             } else {
                 users2.map(async (u) => {
-                    if (u.cedula != users.cedula) {
+                    if (u.cedula != user.cedula) {
                         if (!user.programaSocial && !usu.programaSocial) {
                             programa = false;
                         }
@@ -84,7 +87,7 @@ gestor.verifUser = async () => {
                                 puntaje += 2;
                             }
                         }
-                        if (puntaje <= 42 && !programa) {
+                        if (puntaje >= 42 && !programa) {
                             var usuario = new Usuariof({ "cedula": usu.cedula, "nombre": usu.nombre, "celular": usu.celular, "departamento": usu.departamento, "ciudad": usu.departamento, "barrio": usu.barrio, "direccion": usu.direccion, "estrato": usu.estrato, "numSalarios": usu.numSalarios, "cuartos": usu.cuartos, "bath": usu.bath, "miembros": usu.miembros, "vulnerabilidad": usu.vulnerabilidad, "miembrosVulnerables": usu.miembrosVulnerables, "programaSocial": usu.programaSocial });
                             await usuario.save();
                         }
@@ -96,6 +99,33 @@ gestor.verifUser = async () => {
 
         );
     });
+
+
+};
+gestor.crearTrabajador = (cedula, nombre, celular, ciudad) => {
+    var work = new Worker({ "cedula": cedula, "nombre": nombre, "celular": celular, "ciudad": ciudad, "vinculaciones": [] });
+    work.save();
+};
+gestor.crearVinculacion = async (cedulaU, cedulaW) => {
+    var users = await Usuariof.find();
+    var workers = await Worker.find();
+    var comp = false;
+    var u;
+    users.map((user) => {
+        if (user.cedula == cedulaU) {
+            comp = true;
+            u = new Usuariof(user);
+        }
+    });
+    if (comp) {
+        workers.map(async  (w) => {
+            if (w.cedula == cedulaW) {
+                w.vinculaciones.push(u);
+              await  w.save();
+            }
+        });
+    }
+
 };
 
 module.exports = gestor;

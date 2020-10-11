@@ -1,0 +1,23 @@
+const{Schema,model}=require("mongoose");
+const worker=new Schema({
+    cedula:{
+        type:String,
+        required:true
+    },
+    nombre:{
+        type:String,
+        required:true
+    },
+    celular:{
+        type:String,
+        required:true
+    },
+    ciudad:{
+        type:String,
+        required:true
+    },
+    vinculaciones:{
+        type:[]
+    }
+});
+module.exports=model("Workers",worker);
