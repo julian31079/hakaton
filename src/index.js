@@ -21,7 +21,7 @@ app.use(express.json());
 console.log();
 app.get("/",  (req, res) => {
     console.log("llegue");
-    res.json({"res":"200"});
+    res.json({"res":"200"}); 
 });
 app.get("/createTestUsers",async(req,res)=>{
     const user=new UsuarioG({"cedula":"1234", "nombre":"julian", "celular":"123", "departamento":"Cundinamarca", "ciudad":"Madrid", "barrio":"Las quintas","direccion":"Trans 8 B", "estrato":2, "numSalarios":4,"cuartos":3, "bath":1,"miembros":5,"vulnerabilidad":true, "miembrosVulnerables":4,"programaSocial":false});
