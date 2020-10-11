@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const MONGODB_URI = `mongodb://localhost/hakaton`;
+const MONGODB_URI = `mongodb+srv://julian31079:1234@cluster0.wm6mv.gcp.mongodb.net/principal`;
 mongoose
   .connect(MONGODB_URI, {
     useNewUrlParser: true,
