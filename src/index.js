@@ -18,7 +18,7 @@ app.use(express.json());
 
 //Routes
 
-app.get("/", async (req, res) => {
+app.get("/",  (req, res) => {
     
     res.json({"res":"200"});
 });
