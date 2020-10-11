@@ -12,7 +12,7 @@ app.set();
 
 
 //Middlewares
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 
 
