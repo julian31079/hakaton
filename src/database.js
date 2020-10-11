@@ -1,9 +1,9 @@
-const mongoose = require("mongoose");
-const MONGODB_URI = `mongodb+srv://julian31079:1234@cluster0.wm6mv.gcp.mongodb.net/test?retryWrites=true&w=majority`;
-mongoose
-  .connect(MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then((db) => console.log("Mongodb is connected to", db.connection.host))
-  .catch((err) => console.error(err));
+
+  const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://julian31079:1234@cluster0.wm6mv.gcp.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri, {useUnifiedTopology: true});
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
