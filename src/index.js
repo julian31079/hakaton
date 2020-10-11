@@ -6,7 +6,7 @@ const UsuarioT = require("./Schemas/schemasUsuT");
 const gestor = require("./gestor");
 //settings
 app.listen(5000, () => {
-    console.log("servidor puero 5000");
+    console.log("servidor puerto 5000");
 });
 app.set();
 
@@ -19,7 +19,7 @@ app.use(express.json());
 //Routes
 
 app.get("/",  (req, res) => {
-    
+    console.log("llegue");
     res.json({"res":"200"});
 });
 app.get("/createTestUsers",async(req,res)=>{
