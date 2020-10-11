@@ -1,6 +1,6 @@
 const app = require("./server");
 const express = require("express");
-require("./database");
+//require("./database");
 const UsuarioG = require("./Schemas/schemasUsuG");
 const UsuarioT = require("./Schemas/schemasUsuT");
 const gestor = require("./gestor");
