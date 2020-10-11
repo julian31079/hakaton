@@ -20,7 +20,7 @@ app.use(express.json());
 
 app.get("/", async (req, res) => {
     
-    res
+    res.send("hi");
 });
 app.get("/createTestUsers",async(req,res)=>{
     const user=new UsuarioG({"cedula":"1234", "nombre":"julian", "celular":"123", "departamento":"Cundinamarca", "ciudad":"Madrid", "barrio":"Las quintas","direccion":"Trans 8 B", "estrato":2, "numSalarios":4,"cuartos":3, "bath":1,"miembros":5,"vulnerabilidad":true, "miembrosVulnerables":4,"programaSocial":false});
