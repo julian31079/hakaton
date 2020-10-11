@@ -4,19 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"nodemon src/index.js",
-    "start":"node src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "actions-on-google": "^2.13.0",
     "axios": "^0.20.0",
+    "dialogflow": "^1.2.0",
+    "dialogflow-fulfillment": "^0.6.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "i": "^0.3.6",
     "method-override": "^3.0.0",
     "mongoose": "^5.10.9",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "npm": "^6.14.8"
   }
 }

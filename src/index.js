@@ -4,10 +4,12 @@ require("./database");
 const UsuarioG = require("./Schemas/schemasUsuG");
 const UsuarioT = require("./Schemas/schemasUsuT");
 const gestor = require("./gestor");
+const diff = require('dialogflow-fulfillment');
+//const diff=require("dialogflow-fulfillment");
 //settings
 app.listen(5000, async() => {
     console.log("servidor puerto 5000");
-    console.log(await UsuarioG.find());
+
 });
 app.set();
 
@@ -18,11 +20,16 @@ app.use(express.json());
 
 
 //Routes
-console.log();
+
 app.get("/",  (req, res) => {
-    console.log("llegue");
     res.json({"res":"200"}); 
 });
+app.post("/",(req,res)=>{
+    console.log(req.body);
+ 
+
+});
+
 app.get("/createTestUsers",async(req,res)=>{
     const user=new UsuarioG({"cedula":"1234", "nombre":"julian", "celular":"123", "departamento":"Cundinamarca", "ciudad":"Madrid", "barrio":"Las quintas","direccion":"Trans 8 B", "estrato":2, "numSalarios":4,"cuartos":3, "bath":1,"miembros":5,"vulnerabilidad":true, "miembrosVulnerables":4,"programaSocial":false});
     const user1=new UsuarioT({"cedula":"1234", "nombre":"julian", "celular":"123", "departamento":"Cundinamarca", "ciudad":"Madrid", "barrio":"Las quintas","direccion":"Trans 8 B", "estrato":2, "numSalarios":2,"cuartos":3, "bath":1,"miembros":5,"vulnerabilidad":true, "miembrosVulnerables":4,"programaSocial":false});
