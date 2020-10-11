@@ -5,8 +5,9 @@ const UsuarioG = require("./Schemas/schemasUsuG");
 const UsuarioT = require("./Schemas/schemasUsuT");
 const gestor = require("./gestor");
 //settings
-app.listen(5000, () => {
+app.listen(5000, async() => {
     console.log("servidor puerto 5000");
+    console.log(await UsuarioG.find());
 });
 app.set();
 
@@ -17,7 +18,7 @@ app.use(express.json());
 
 
 //Routes
-console.log("hi");
+console.log();
 app.get("/",  (req, res) => {
     console.log("llegue");
     res.json({"res":"200"});
