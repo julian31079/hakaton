@@ -17,7 +17,7 @@ app.use(express.json());
 
 
 //Routes
-
+console.log("hi");
 app.get("/",  (req, res) => {
     console.log("llegue");
     res.json({"res":"200"});
